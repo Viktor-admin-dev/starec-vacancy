@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRAVO.STAREC.AI — Концепция</title>
+<!-- OG Meta Tags -->
+<meta property="og:title" content="PRAVO.STAREC.AI — Концепция продукта">
+<meta property="og:description" content="AI-правовая система нового поколения. Поиск, анализ, объяснение законов с искусственным интеллектом.">
+<meta property="og:image" content="./assets/og-image.png">
+<meta property="og:type" content="website">
+<meta name="description" content="Концепция продукта PRAVO.STAREC.AI — информационно-правовая AI-система с интеллектуальным поиском и анализом.">
+
+<!-- Favicon -->
+<link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Local font fallback */
+@font-face {
+  font-family: 'Onest';
+  src: url('./assets/fonts/Onest-Variable.woff2') format('woff2');
+  font-display: swap;
+  font-weight: 300 900;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('./assets/fonts/JetBrainsMono-Variable.woff2') format('woff2');
+  font-display: swap;
+  font-weight: 400 600;
+}
+:root {
+  --bg-primary: #0A0E17;
+  --bg-secondary: #111827;
+  --bg-card: #151D2E;
+  --bg-card-hover: #1A2540;
+  --bg-elevated: #1E293B;
+  --accent-blue: #3B82F6;
+  --accent-cyan: #06B6D4;
+  --accent-emerald: #10B981;
+  --accent-amber: #F59E0B;
+  --accent-violet: #8B5CF6;
+  --accent-rose: #F43F5E;
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --border-subtle: rgba(148, 163, 184, 0.08);
+  --border-medium: rgba(148, 163, 184, 0.15);
+  --glow-blue: rgba(59, 130, 246, 0.15);
+  --glow-cyan: rgba(6, 182, 212, 0.12);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Onest', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ===== NAVIGATION ===== */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: rgba(10, 14, 23, 0.85);
+  backdrop-filter: blur(20px) saturate(1.5);
+  border-bottom: 1px solid var(--border-subtle);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+}
+
+.topbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: -0.5px;
+}
+
+.topbar-logo .logo-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 900;
+  color: white;
+}
+
+.topbar-logo span.highlight {
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.topbar-nav {
+  display: flex;
+  gap: 4px;
+  margin-left: 48px;
+}
+
+.topbar-nav a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.topbar-nav a:hover { color: var(--text-primary); background: var(--bg-card); }
+.topbar-nav a.active { color: var(--accent-blue); background: var(--glow-blue); }
+
+.topbar-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-ai-chat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-violet));
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-family: 'Onest', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25);
+}
+
+.btn-ai-chat:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 25px rgba(59, 130, 246, 0.35);
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+/* ===== PAGE SECTIONS ===== */
+.page-section {
+  padding: 80px 0;
+  position: relative;
+}
+
+.page-section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.section-desc {
+  font-size: 17px;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 32px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, var(--glow-blue) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 80%, var(--glow-cyan) 0%, transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: 100px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  animation: fadeInUp 0.8s ease;
+}
+
+.hero-badge .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-emerald);
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero h1 {
+  font-size: 64px;
+  font-weight: 900;
+  letter-spacing: -3px;
+  line-height: 1.05;
+  margin-bottom: 24px;
+  animation: fadeInUp 0.8s ease 0.1s both;
+}
+
+.hero h1 .gradient-text {
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan), var(--accent-emerald));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 650px;
+  margin: 0 auto 48px;
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== SEARCH BAR ===== */
+.search-container {
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  animation: fadeInUp 0.8s ease 0.3s both;
+}
+
+.search-bar {
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: 20px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.search-bar:focus-within {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 4px var(--glow-blue), 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.search-icon {
+  padding: 0 16px;
+  color: var(--text-muted);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-family: 'Onest', sans-serif;
+  font-size: 16px;
+  padding: 14px 0;
+}
+
+.search-input::placeholder { color: var(--text-muted); }
+
+.search-btn {
+  padding: 14px 28px;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+  border: none;
+  border-radius: 14px;
+  color: white;
+  font-family: 'Onest', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.search-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+}
+
+.search-hints {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.search-hint {
+  padding: 6px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 100px;
+  font-size: 12px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.search-hint:hover {
+  color: var(--text-secondary);
+  border-color: var(--border-medium);
+  background: var(--bg-card-hover);
+}
+
+/* ===== STATS BAR ===== */
+.stats-bar {
+  display: flex;
+  gap: 1px;
+  background: var(--border-subtle);
+  border-radius: 16px;
+  overflow: hidden;
+  max-width: 900px;
+  margin: 60px auto 0;
+  animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+.stat-item {
+  flex: 1;
+  padding: 24px;
+  background: var(--bg-card);
+  text-align: center;
+  transition: background 0.2s;
+}
+
+.stat-item:hover { background: var(--bg-card-hover); }
+
+.stat-number {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.stat-number.blue { color: var(--accent-blue); }
+.stat-number.cyan { color: var(--accent-cyan); }
+.stat-number.emerald { color: var(--accent-emerald); }
+.stat-number.amber { color: var(--accent-amber); }
+.stat-number.violet { color: var(--accent-violet); }
+
+.stat-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ===== AI CHAT PANEL (CONCEPT) ===== */
+.concept-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.ai-demo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.ai-chat-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.ai-chat-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ai-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-violet));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.ai-chat-header-text h4 {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.ai-chat-header-text span {
+  font-size: 12px;
+  color: var(--accent-emerald);
+}
+
+.ai-chat-messages {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 400px;
+}
+
+.chat-msg {
+  display: flex;
+  gap: 12px;
+  max-width: 90%;
+}
+
+.chat-msg.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.chat-msg-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.chat-msg.ai .chat-msg-avatar {
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-violet));
+}
+
+.chat-msg.user .chat-msg-avatar {
+  background: var(--bg-elevated);
+}
+
+.chat-msg-bubble {
+  padding: 14px 18px;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.chat-msg.ai .chat-msg-bubble {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+}
+
+.chat-msg.user .chat-msg-bubble {
+  background: var(--accent-blue);
+  color: white;
+}
+
+.chat-msg-bubble .ref-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 10px;
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--accent-blue);
+  font-weight: 600;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.ai-chat-input {
+  padding: 16px 24px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ai-chat-input input {
+  flex: 1;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: var(--text-primary);
+  font-family: 'Onest', sans-serif;
+  font-size: 14px;
+  outline: none;
+}
+
+.ai-chat-input button {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--accent-blue);
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== FEATURE INFO PANEL ===== */
+.feature-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.feature-card {
+  padding: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.feature-card:hover {
+  border-color: var(--accent-blue);
+  background: var(--bg-card-hover);
+  transform: translateX(4px);
+}
+
+.feature-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.feature-card-icon.blue { background: var(--glow-blue); }
+.feature-card-icon.cyan { background: var(--glow-cyan); }
+.feature-card-icon.emerald { background: rgba(16, 185, 129, 0.12); }
+.feature-card-icon.amber { background: rgba(245, 158, 11, 0.12); }
+.feature-card-icon.violet { background: rgba(139, 92, 246, 0.12); }
+
+.feature-card h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.feature-card p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ===== DOCUMENT VIEWER CONCEPT ===== */
+.doc-viewer-demo {
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: 20px;
+  overflow: hidden;
+  max-width: 1200px;
+  margin: 40px auto 0;
+}
+
+.doc-viewer-toolbar {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.doc-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.doc-breadcrumb span.active { color: var(--text-primary); font-weight: 600; }
+.doc-breadcrumb .sep { opacity: 0.4; }
+
+.doc-toolbar-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+}
+
+.doc-toolbar-btn {
+  padding: 8px 16px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-family: 'Onest', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.doc-toolbar-btn:hover { background: var(--bg-card-hover); color: var(--text-primary); }
+
+.doc-viewer-body {
+  display: grid;
+  grid-template-columns: 280px 1fr 320px;
+  min-height: 500px;
+}
+
+.doc-toc {
+  border-right: 1px solid var(--border-subtle);
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.doc-toc-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.doc-toc-item {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 2px;
+}
+
+.doc-toc-item:hover { background: var(--bg-elevated); color: var(--text-primary); }
+.doc-toc-item.active { background: var(--glow-blue); color: var(--accent-blue); font-weight: 600; }
+.doc-toc-item.sub { padding-left: 28px; font-size: 12px; }
+
+.doc-content {
+  padding: 32px 40px;
+  overflow-y: auto;
+}
+
+.doc-title {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.doc-meta {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.doc-meta-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+  padding: 4px 12px;
+  background: var(--bg-elevated);
+  border-radius: 8px;
+}
+
+.doc-meta-tag.active-tag { background: rgba(16, 185, 129, 0.1); color: var(--accent-emerald); }
+
+.doc-text {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--text-secondary);
+}
+
+.doc-text .article-num {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 16px;
+  margin-top: 20px;
+  display: block;
+}
+
+.doc-text .highlight-change {
+  background: rgba(245, 158, 11, 0.1);
+  border-left: 3px solid var(--accent-amber);
+  padding: 4px 12px;
+  margin: 8px 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 12px;
+  color: var(--accent-amber);
+}
+
+.doc-text p { margin-bottom: 12px; }
+
+/* Doc sidebar / AI panel */
+.doc-ai-panel {
+  border-left: 1px solid var(--border-subtle);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.doc-ai-section-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.doc-ai-section-title .ai-badge {
+  padding: 2px 8px;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-violet));
+  border-radius: 6px;
+  font-size: 9px;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.ai-summary-card {
+  padding: 16px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.related-doc {
+  padding: 12px 14px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.related-doc:hover { border-color: var(--accent-blue); background: var(--bg-card-hover); }
+
+.related-doc-type {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--accent-cyan);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.related-doc-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.related-doc-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ===== NAVIGATION CARDS ===== */
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 40px auto 0;
+}
+
+.nav-card {
+  padding: 28px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.nav-card:hover {
+  border-color: var(--accent-blue);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.nav-card:hover::before { opacity: 1; }
+
+.nav-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.nav-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.nav-card-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--text-muted);
+  padding: 4px 12px;
+  background: var(--bg-elevated);
+  border-radius: 8px;
+}
+
+.nav-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: -0.3px;
+}
+
+.nav-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.nav-card-tags {
+  display: flex;
+  gap: 6px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.nav-card-tag {
+  padding: 4px 10px;
+  background: var(--bg-elevated);
+  border-radius: 6px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ===== COMPARISON SECTION ===== */
+.comparison-table {
+  max-width: 1000px;
+  margin: 40px auto 0;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border-medium);
+}
+
+.comparison-row {
+  display: grid;
+  grid-template-columns: 250px repeat(4, 1fr);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.comparison-row:last-child { border-bottom: none; }
+
+.comparison-row.header {
+  background: var(--bg-elevated);
+}
+
+.comparison-cell {
+  padding: 16px 20px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+}
+
+.comparison-cell:first-child {
+  justify-content: flex-start;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--bg-card);
+}
+
+.comparison-row.header .comparison-cell {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.comparison-row.header .comparison-cell.starec-col {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.1));
+  color: var(--accent-blue);
+}
+
+.check { color: var(--accent-emerald); font-size: 18px; font-weight: 700; }
+.cross { color: var(--text-muted); font-size: 14px; opacity: 0.5; }
+.star { color: var(--accent-amber); font-size: 18px; }
+
+/* ===== FOOTER ===== */
+.footer {
+  border-top: 1px solid var(--border-subtle);
+  padding: 60px 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+}
+
+.footer-brand h3 {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.footer-brand p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.footer-col h4 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.footer-col a {
+  display: block;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 14px;
+  padding: 4px 0;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--accent-blue); }
+
+/* ===== VACANCY CTA ===== */
+.vacancy-cta-banner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 32px;
+}
+
+.vacancy-cta-card {
+  padding: 48px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(139, 92, 246, 0.06));
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  border-radius: 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.vacancy-cta-card::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.vacancy-cta-card h3 {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+  position: relative;
+}
+
+.vacancy-cta-card p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+  position: relative;
+}
+
+.vacancy-cta-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.vacancy-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 14px;
+  border: none;
+  font-family: 'Onest', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.vacancy-cta-btn.primary {
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+  color: white;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+}
+
+.vacancy-cta-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);
+}
+
+.vacancy-cta-btn.secondary {
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  color: var(--text-secondary);
+}
+
+.vacancy-cta-btn.secondary:hover {
+  color: var(--text-primary);
+  border-color: rgba(148, 163, 184, 0.25);
+  background: var(--bg-card-hover);
+}
+
+.topbar-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-violet));
+  color: white;
+  font-family: 'Onest', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25);
+}
+
+.topbar-back:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 25px rgba(59, 130, 246, 0.35);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .doc-viewer-body { grid-template-columns: 1fr; }
+  .doc-toc, .doc-ai-panel { display: none; }
+  .ai-demo { grid-template-columns: 1fr; }
+  .nav-grid { grid-template-columns: 1fr; }
+  .comparison-row { grid-template-columns: 150px repeat(4, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .hero h1 { font-size: 36px; letter-spacing: -1.5px; }
+  .hero-subtitle { font-size: 16px; }
+  .stats-bar { flex-direction: column; }
+  .topbar-nav { display: none; }
+  .section-title { font-size: 28px; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-medium); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- ===== TOP BAR ===== -->
+<nav class="topbar">
+  <div class="topbar-logo">
+    <div class="logo-icon">⚖</div>
+    <span>PRAVO<span class="highlight">.STAREC</span></span>
+  </div>
+  <div class="topbar-nav">
+    <a href="#" class="active">Поиск</a>
+    <a href="#">Законодательство</a>
+    <a href="#">Судебная практика</a>
+    <a href="#">Кодексы</a>
+    <a href="#">Новое в праве</a>
+    <a href="#">Калькуляторы</a>
+  </div>
+  <div class="topbar-right">
+    <a href="./index.html#apply" class="topbar-back">← Вернуться к вакансии</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      57 994 документа актуализированы · обновлено сегодня
+    </div>
+    <h1>Право России<br>c <span class="gradient-text">Искусственным Интеллектом</span></h1>
+    <p class="hero-subtitle">
+      Первая правовая система с AI-ассистентом. Мгновенный поиск, анализ изменений,
+      объяснение сложных норм простым языком и автоматические связи между документами.
+    </p>
+
+    <div class="search-container">
+      <div class="search-bar">
+        <span class="search-icon">⌕</span>
+        <input class="search-input" type="text" placeholder="Поиск по законам, кодексам, судебной практике... или задайте вопрос AI">
+        <button class="search-btn">✦ Найти с AI</button>
+      </div>
+      <div class="search-hints">
+        <span class="search-hint">Ст. 228 УК РФ</span>
+        <span class="search-hint">Сроки исковой давности</span>
+        <span class="search-hint">Как оспорить штраф ГИБДД</span>
+        <span class="search-hint">ФЗ-44 о госзакупках</span>
+        <span class="search-hint">Изменения в ТК 2025</span>
+      </div>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-number blue">57,994</div>
+        <div class="stat-label">Документов</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number cyan">97,841</div>
+        <div class="stat-label">Редакций</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number emerald">779,047</div>
+        <div class="stat-label">Судебных актов</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number amber">24</div>
+        <div class="stat-label">Кодекса</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number violet">2,990</div>
+        <div class="stat-label">Фед. законов</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NAVIGATION CARDS ===== -->
+<section class="page-section">
+  <div class="concept-section" style="text-align: center;">
+    <span class="page-section-label">📂 Навигация</span>
+    <h2 class="section-title">Вся правовая база —<br>в одном клике</h2>
+    <p class="section-desc" style="margin: 0 auto;">Интуитивная структура вместо бесконечных списков. Каждый раздел дышит и показывает ключевую информацию.</p>
+  </div>
+
+  <div class="nav-grid" style="padding: 0 32px;">
+    <div class="nav-card">
+      <div class="nav-card-header">
+        <div class="nav-card-icon" style="background: var(--glow-blue);">📜</div>
+        <span class="nav-card-count">21 ред.</span>
+      </div>
+      <h3>Конституция РФ</h3>
+      <p>Основной закон с комментариями и историей изменений</p>
+      <div class="nav-card-tags">
+        <span class="nav-card-tag">Действующая ред.</span>
+        <span class="nav-card-tag">Комментарии</span>
+      </div>
+    </div>
+
+    <div class="nav-card">
+      <div class="nav-card-header">
+        <div class="nav-card-icon" style="background: rgba(16, 185, 129, 0.12);">⚖</div>
+        <span class="nav-card-count">24 кодекса</span>
+      </div>
+      <h3>Кодексы РФ</h3>
+      <p>УК, ГК, НК, ТК, КоАП и другие кодексы с AI-навигацией</p>
+      <div class="nav-card-tags">
+        <span class="nav-card-tag">4,865 ред.</span>
+        <span class="nav-card-tag">AI-связи</span>
+      </div>
+    </div>
+
+    <div class="nav-card">
+      <div class="nav-card-header">
+        <div class="nav-card-icon" style="background: rgba(245, 158, 11, 0.12);">📋</div>
+        <span class="nav-card-count">2,990 ФЗ</span>
+      </div>
+      <h3>Федеральные законы</h3>
+      <p>Все федеральные законы с историей и отслеживанием изменений</p>
+      <div class="nav-card-tags">
+        <span class="nav-card-tag">18,154 ред.</span>
+        <span class="nav-card-tag">Актуально</span>
+      </div>
+    </div>
+
+    <div class="nav-card">
+      <div class="nav-card-header">
+        <div class="nav-card-icon" style="background: rgba(139, 92, 246, 0.12);">🏛</div>
+        <span class="nav-card-count">33,437 док.</span>
+      </div>
+      <h3>Указы Президента</h3>
+      <p>Указы, распоряжения и поручения Президента РФ</p>
+      <div class="nav-card-tags">
+        <span class="nav-card-tag">43,999 ред.</span>
+        <span class="nav-card-tag">Хронология</span>
+      </div>
+    </div>
+
+    <div class="nav-card">
+      <div class="nav-card-header">
+        <div class="nav-card-icon" style="background: var(--glow-cyan);">🔨</div>
+        <span class="nav-card-count">779,047</span>
+      </div>
+      <h3>Судебная практика</h3>
+      <p>КС РФ и ВС РФ: решения, определения, обзоры</p>
+      <div class="nav-card-tags">
+        <span class="nav-card-tag">Распарсено</span>
+        <span class="nav-card-tag">AI-аналитика</span>
+      </div>
+    </div>
+
+    <div class="nav-card">
+      <div class="nav-card-header">
+        <div class="nav-card-icon" style="background: rgba(244, 63, 94, 0.12);">📊</div>
+        <span class="nav-card-count">Новое</span>
+      </div>
+      <h3>AI-Аналитика</h3>
+      <p>Тренды судебной практики, прогнозы, статистика решений</p>
+      <div class="nav-card-tags">
+        <span class="nav-card-tag">Графики</span>
+        <span class="nav-card-tag">ML-модели</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AI ASSISTANT SECTION ===== -->
+<section class="page-section" style="background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(59, 130, 246, 0.03) 50%, var(--bg-primary) 100%);">
+  <div class="concept-section">
+    <span class="page-section-label">✦ Ключевое преимущество</span>
+    <h2 class="section-title">AI-Юрист всегда рядом</h2>
+    <p class="section-desc">Задайте вопрос на обычном языке — получите ответ со ссылками на конкретные статьи, судебные решения и разъяснения.</p>
+
+    <div class="ai-demo" style="margin-top: 40px;">
+      <div class="ai-chat-panel">
+        <div class="ai-chat-header">
+          <div class="ai-avatar">✦</div>
+          <div class="ai-chat-header-text">
+            <h4>STAREC AI Юрист</h4>
+            <span>● Онлайн · Анализирую 57,994 документа</span>
+          </div>
+        </div>
+        <div class="ai-chat-messages">
+          <div class="chat-msg user">
+            <div class="chat-msg-avatar">ВС</div>
+            <div class="chat-msg-bubble">
+              Какие сроки давности по уголовным делам о мошенничестве в особо крупном размере?
+            </div>
+          </div>
+          <div class="chat-msg ai">
+            <div class="chat-msg-avatar">✦</div>
+            <div class="chat-msg-bubble">
+              Мошенничество в особо крупном размере квалифицируется по <span class="ref-tag">ч.4 ст.159 УК РФ</span> как тяжкое преступление (наказание до 10 лет лишения свободы).
+              <br><br>
+              Согласно <span class="ref-tag">п.«б» ч.1 ст.78 УК РФ</span>, срок давности по тяжким преступлениям составляет <strong>10 лет</strong> с момента совершения.
+              <br><br>
+              ⚠️ Важные нюансы из судебной практики:
+              <br>• Срок приостанавливается при уклонении от следствия
+              <br>• ВС РФ разъяснил порядок исчисления в <span class="ref-tag">Пост. Пленума №19 от 27.06.2013</span>
+            </div>
+          </div>
+          <div class="chat-msg user">
+            <div class="chat-msg-avatar">ВС</div>
+            <div class="chat-msg-bubble">
+              Покажи практику ВС по прекращению таких дел по истечении давности
+            </div>
+          </div>
+        </div>
+        <div class="ai-chat-input">
+          <input type="text" placeholder="Задайте вопрос по праву...">
+          <button>→</button>
+        </div>
+      </div>
+
+      <div class="feature-info">
+        <div class="feature-card">
+          <div class="feature-card-icon blue">🧠</div>
+          <h4>Понимает контекст</h4>
+          <p>AI анализирует вопрос, находит релевантные нормы, судебные акты и разъяснения ведомств. Не просто поиск по ключевым словам.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon emerald">🔗</div>
+          <h4>Ссылки на источники</h4>
+          <p>Каждый ответ содержит кликабельные ссылки на конкретные статьи, части и пункты. Проверяйте одним кликом.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon amber">📈</div>
+          <h4>Анализ практики</h4>
+          <p>AI автоматически подбирает релевантную судебную практику и показывает статистику: как часто суды решают в пользу защиты.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon violet">⏱</div>
+          <h4>Отслеживание изменений</h4>
+          <p>Подписка на изменения в конкретных статьях. AI уведомит и объяснит, что изменилось и как это повлияет.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOCUMENT VIEWER ===== -->
+<section class="page-section">
+  <div class="concept-section" style="text-align: center;">
+    <span class="page-section-label">📖 Просмотр документов</span>
+    <h2 class="section-title">Читайте закон —<br>AI объясняет рядом</h2>
+    <p class="section-desc" style="margin: 0 auto;">Трёхколоночный интерфейс: оглавление, текст документа и AI-панель с объяснениями, связями и судебной практикой.</p>
+  </div>
+
+  <div class="doc-viewer-demo" style="margin-left: 32px; margin-right: 32px;">
+    <div class="doc-viewer-toolbar">
+      <div class="doc-breadcrumb">
+        <span>Кодексы</span>
+        <span class="sep">›</span>
+        <span>Уголовный кодекс</span>
+        <span class="sep">›</span>
+        <span class="active">Статья 159. Мошенничество</span>
+      </div>
+      <div class="doc-toolbar-actions">
+        <div class="doc-toolbar-btn">📋 Копировать</div>
+        <div class="doc-toolbar-btn">🔀 Сравнить редакции</div>
+        <div class="doc-toolbar-btn">⬇ Скачать</div>
+        <div class="doc-toolbar-btn">🔔 Следить</div>
+      </div>
+    </div>
+    <div class="doc-viewer-body">
+      <div class="doc-toc">
+        <div class="doc-toc-title">Оглавление</div>
+        <div class="doc-toc-item">Глава 21. Преступления против собственности</div>
+        <div class="doc-toc-item sub">Ст. 158. Кража</div>
+        <div class="doc-toc-item sub active">Ст. 159. Мошенничество</div>
+        <div class="doc-toc-item sub">Ст. 159.1. Мошенничество в кредитовании</div>
+        <div class="doc-toc-item sub">Ст. 159.2. При получении выплат</div>
+        <div class="doc-toc-item sub">Ст. 159.3. С использованием ЭСП</div>
+        <div class="doc-toc-item sub">Ст. 159.5. В страховании</div>
+        <div class="doc-toc-item sub">Ст. 159.6. В сфере IT</div>
+        <div class="doc-toc-item sub">Ст. 160. Присвоение и растрата</div>
+        <div class="doc-toc-item sub">Ст. 161. Грабёж</div>
+      </div>
+      <div class="doc-content">
+        <div class="doc-title">Статья 159. Мошенничество</div>
+        <div class="doc-meta">
+          <span class="doc-meta-tag active-tag">● Действующая редакция</span>
+          <span class="doc-meta-tag">Ред. от 28.06.2025</span>
+          <span class="doc-meta-tag">47 редакций</span>
+          <span class="doc-meta-tag">12,847 суд. решений</span>
+        </div>
+        <div class="doc-text">
+          <span class="article-num">Часть 1</span>
+          <p>Мошенничество, то есть хищение чужого имущества или приобретение права на чужое имущество путём обмана или злоупотребления доверием, —</p>
+          <p>наказывается штрафом в размере до ста двадцати тысяч рублей или в размере заработной платы или иного дохода осуждённого за период до одного года, либо обязательными работами на срок до трёхсот шестидесяти часов, либо исправительными работами на срок до одного года, либо ограничением свободы на срок до двух лет, либо принудительными работами на срок до двух лет, либо арестом на срок до четырёх месяцев, либо лишением свободы на срок до двух лет.</p>
+
+          <div class="highlight-change">
+            ⚡ Изменено ФЗ от 03.07.2024 №...— ранее максимальный штраф составлял 80 000 руб.
+          </div>
+
+          <span class="article-num">Часть 4</span>
+          <p>Мошенничество, совершённое организованной группой либо в особо крупном размере или повлёкшее лишение права гражданина на жилое помещение, —</p>
+          <p>наказывается лишением свободы на срок до <strong>десяти лет</strong> со штрафом в размере до одного миллиона рублей...</p>
+        </div>
+      </div>
+      <div class="doc-ai-panel">
+        <div class="doc-ai-section-title">
+          Объяснение <span class="ai-badge">AI</span>
+        </div>
+        <div class="ai-summary-card">
+          <strong>Простым языком:</strong> Мошенничество — это когда кто-то обманом или злоупотребляя доверием завладевает чужим имуществом. За это можно получить от штрафа до 10 лет лишения свободы в зависимости от суммы и обстоятельств.
+        </div>
+
+        <div class="doc-ai-section-title" style="margin-top: 12px;">
+          Судебная практика <span class="ai-badge">AI</span>
+        </div>
+        <div class="related-doc">
+          <div class="related-doc-type">Пленум ВС РФ</div>
+          <div class="related-doc-title">Постановление №48 от 30.11.2017</div>
+          <div class="related-doc-desc">О судебной практике по делам о мошенничестве</div>
+        </div>
+        <div class="related-doc">
+          <div class="related-doc-type">Обзор ВС РФ</div>
+          <div class="related-doc-title">Обзор практики за 2024</div>
+          <div class="related-doc-desc">Разграничение мошенничества и гражданско-правовых споров</div>
+        </div>
+
+        <div class="doc-ai-section-title" style="margin-top: 12px;">
+          Связанные нормы
+        </div>
+        <div class="related-doc">
+          <div class="related-doc-type">УК РФ</div>
+          <div class="related-doc-title">Ст. 78 — Сроки давности</div>
+          <div class="related-doc-desc">10 лет для тяжких преступлений</div>
+        </div>
+        <div class="related-doc">
+          <div class="related-doc-type">УПК РФ</div>
+          <div class="related-doc-title">Ст. 24 п.3 — Прекращение дела</div>
+          <div class="related-doc-desc">Основания прекращения по давности</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMPARISON ===== -->
+<section class="page-section">
+  <div class="concept-section" style="text-align: center;">
+    <span class="page-section-label">🏆 Преимущества</span>
+    <h2 class="section-title">Почему STAREC, а не<br>Консультант+?</h2>
+  </div>
+
+  <div class="comparison-table" style="margin-left: 32px; margin-right: 32px; max-width: calc(100% - 64px);">
+    <div class="comparison-row header">
+      <div class="comparison-cell">Функция</div>
+      <div class="comparison-cell starec-col">STAREC.AI</div>
+      <div class="comparison-cell">Консультант+</div>
+      <div class="comparison-cell">Гарант</div>
+      <div class="comparison-cell">Кодекс</div>
+    </div>
+    <div class="comparison-row">
+      <div class="comparison-cell">AI-Ассистент</div>
+      <div class="comparison-cell"><span class="star">★</span></div>
+      <div class="comparison-cell"><span class="cross">—</span></div>
+      <div class="comparison-cell"><span class="cross">—</span></div>
+      <div class="comparison-cell"><span class="cross">—</span></div>
+    </div>
+    <div class="comparison-row">
+      <div class="comparison-cell">Бесплатный доступ</div>
+      <div class="comparison-cell"><span class="check">✓</span></div>
+      <div class="comparison-cell"><span class="cross">—</span></div>
+      <div class="comparison-cell"><span class="cross">частично</span></div>
+      <div class="comparison-cell"><span class="check">✓</span></div>
+    </div>
+    <div class="comparison-row">
+      <div class="comparison-cell">Объяснение простым языком</div>
+      <div class="comparison-cell"><span class="star">★</span></div>
+      <div class="comparison-cell"><span class="cross">—</span></div>
+      <div class="comparison-cell"><span class="cross">—</span></div>
+      <div class="comparison-cell"><span class="cross">—</span></div>
+    </div>
+    <div class="comparison-row">
+      <div class="comparison-cell">Анализ суд. практики (AI)</div>
+      <div class="comparison-cell"><span class="star">★</span></div>
+      <div class="comparison-cell"><span class="cross">—</span></div>
+      <div class="comparison-cell"><span class="cross">—</span></div>
+      <div class="comparison-cell"><span class="cross">—</span></div>
+    </div>
+    <div class="comparison-row">
+      <div class="comparison-cell">Современный интерфейс</div>
+      <div class="comparison-cell"><span class="check">✓</span></div>
+      <div class="comparison-cell"><span class="cross">—</span></div>
+      <div class="comparison-cell"><span class="cross">частично</span></div>
+      <div class="comparison-cell"><span class="cross">—</span></div>
+    </div>
+    <div class="comparison-row">
+      <div class="comparison-cell">Сравнение редакций</div>
+      <div class="comparison-cell"><span class="check">✓</span></div>
+      <div class="comparison-cell"><span class="check">✓</span></div>
+      <div class="comparison-cell"><span class="check">✓</span></div>
+      <div class="comparison-cell"><span class="check">✓</span></div>
+    </div>
+    <div class="comparison-row">
+      <div class="comparison-cell">Автосвязи между нормами</div>
+      <div class="comparison-cell"><span class="star">★</span></div>
+      <div class="comparison-cell"><span class="check">✓</span></div>
+      <div class="comparison-cell"><span class="check">✓</span></div>
+      <div class="comparison-cell"><span class="cross">частично</span></div>
+    </div>
+    <div class="comparison-row">
+      <div class="comparison-cell">Мобильная версия</div>
+      <div class="comparison-cell"><span class="check">✓</span></div>
+      <div class="comparison-cell"><span class="cross">—</span></div>
+      <div class="comparison-cell"><span class="check">✓</span></div>
+      <div class="comparison-cell"><span class="cross">—</span></div>
+    </div>
+    <div class="comparison-row">
+      <div class="comparison-cell">API для разработчиков</div>
+      <div class="comparison-cell"><span class="star">★</span></div>
+      <div class="comparison-cell"><span class="cross">—</span></div>
+      <div class="comparison-cell"><span class="cross">—</span></div>
+      <div class="comparison-cell"><span class="cross">—</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>PRAVO.STAREC.AI</h3>
+      <p>Правовая информационная система нового поколения с искусственным интеллектом. Законодательство РФ, судебная практика, аналитика — всё в одном месте.</p>
+      <p style="margin-top: 12px;">Источники: pravo.gov.ru, minfin.gov.ru, ksrf.ru, vsrf.ru</p>
+    </div>
+    <div class="footer-col">
+      <h4>Документы</h4>
+      <a href="#">Конституция РФ</a>
+      <a href="#">Кодексы</a>
+      <a href="#">Федеральные законы</a>
+      <a href="#">Указы Президента</a>
+      <a href="#">Судебная практика</a>
+    </div>
+    <div class="footer-col">
+      <h4>Сервисы</h4>
+      <a href="#">AI-Ассистент</a>
+      <a href="#">Сравнение редакций</a>
+      <a href="#">Калькулятор сроков</a>
+      <a href="#">API документация</a>
+      <a href="#">Telegram-бот</a>
+    </div>
+    <div class="footer-col">
+      <h4>О проекте</h4>
+      <a href="#">О STAREC</a>
+      <a href="#">Методология</a>
+      <a href="#">Обратная связь</a>
+      <a href="#">Для юристов</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== VACANCY CTA BANNER ===== -->
+<section class="vacancy-cta-banner">
+  <div class="vacancy-cta-card">
+    <h3>Нравится концепт?</h3>
+    <p>Мы ищем Product Owner, который превратит его в работающий продукт.</p>
+    <div class="vacancy-cta-actions">
+      <a href="./index.html" class="vacancy-cta-btn primary">Смотреть вакансию →</a>
+      <a href="./questions.html" class="vacancy-cta-btn secondary">Ответить на вопросы →</a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

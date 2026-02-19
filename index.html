@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Owner — PRAVO.STAREC.AI</title>
+
+<!-- OG Meta Tags -->
+<meta property="og:title" content="Product Owner — PRAVO.STAREC.AI">
+<meta property="og:description" content="LegalTech-стартап ищет Product Owner для информационно-правовой AI-системы">
+<meta property="og:image" content="./assets/og-image.png">
+<meta property="og:type" content="website">
+<meta name="description" content="Вакансия Product Owner в LegalTech-стартапе STAREC. Информационно-правовая AI-система нового поколения.">
+
+<!-- Favicon -->
+<link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+
+<!-- Google Fonts (primary) -->
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* Local font fallback */
+@font-face {
+  font-family: 'Onest';
+  src: url('./assets/fonts/Onest-Variable.woff2') format('woff2');
+  font-display: swap;
+  font-weight: 300 900;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('./assets/fonts/JetBrainsMono-Variable.woff2') format('woff2');
+  font-display: swap;
+  font-weight: 400 600;
+}
+
+:root {
+  --bg: #06090F;
+  --bg-card: #0E1420;
+  --bg-card-hover: #141C2E;
+  --bg-elevated: #1A2338;
+  --accent: #3B82F6;
+  --accent-cyan: #06B6D4;
+  --accent-emerald: #10B981;
+  --accent-amber: #F59E0B;
+  --accent-violet: #8B5CF6;
+  --text: #F1F5F9;
+  --text-sec: #94A3B8;
+  --text-dim: #64748B;
+  --border: rgba(148,163,184,0.08);
+  --border-md: rgba(148,163,184,0.14);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Onest', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+::selection { background: rgba(59,130,246,0.3); }
+
+/* ===== LAYOUT ===== */
+.container { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+
+/* ===== TOPBAR ===== */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; height: 60px; z-index: 100;
+  background: rgba(6,9,15,0.88);
+  backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; padding: 0 32px;
+}
+
+.topbar-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-weight: 800; font-size: 16px; letter-spacing: -0.5px;
+  text-decoration: none; color: var(--text);
+}
+
+.topbar-logo .icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-cyan));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 900; color: white;
+}
+
+.topbar-logo .hl {
+  background: linear-gradient(135deg, var(--accent), var(--accent-cyan));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.topbar-nav {
+  display: flex; align-items: center; gap: 6px; margin-left: 32px;
+}
+
+.topbar-nav a {
+  color: var(--text-sec); text-decoration: none;
+  font-size: 13px; font-weight: 500; padding: 7px 14px;
+  border-radius: 8px; transition: all 0.2s;
+}
+.topbar-nav a:hover { color: var(--text); background: var(--bg-card); }
+
+.topbar-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+
+.topbar-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 18px; border-radius: 10px; border: none;
+  background: linear-gradient(135deg, var(--accent), var(--accent-violet));
+  color: white; font-family: 'Onest', sans-serif;
+  font-size: 13px; font-weight: 600; cursor: pointer;
+  text-decoration: none; transition: all 0.3s;
+  box-shadow: 0 4px 14px rgba(59,130,246,0.25);
+}
+.topbar-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 22px rgba(59,130,246,0.35); }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  padding: 120px 24px 80px; position: relative; overflow: hidden;
+}
+
+.hero::before {
+  content: ''; position: absolute; top: -250px; left: 50%; transform: translateX(-50%);
+  width: 900px; height: 900px;
+  background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(6,182,212,0.06) 0%, transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(139,92,246,0.05) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.hero-content { position: relative; z-index: 2; max-width: 780px; }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 18px; border-radius: 100px;
+  background: var(--bg-card); border: 1px solid var(--border-md);
+  font-size: 12px; color: var(--text-sec); margin-bottom: 28px;
+  animation: fadeUp 0.7s ease;
+}
+.hero-badge .dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--accent-emerald);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
+
+.hero h1 {
+  font-size: clamp(40px, 7vw, 62px); font-weight: 900;
+  letter-spacing: -2.5px; line-height: 1.08; margin-bottom: 22px;
+  animation: fadeUp 0.7s ease 0.1s both;
+}
+.hero h1 .gr {
+  background: linear-gradient(135deg, var(--accent), var(--accent-cyan), var(--accent-emerald));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.hero-sub {
+  font-size: clamp(16px, 2.2vw, 19px); color: var(--text-sec);
+  line-height: 1.75; max-width: 600px; margin: 0 auto 40px;
+  animation: fadeUp 0.7s ease 0.2s both;
+}
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+
+.hero-actions {
+  display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+  animation: fadeUp 0.7s ease 0.3s both;
+}
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: 14px; border: none;
+  font-family: 'Onest', sans-serif; font-size: 15px; font-weight: 600;
+  cursor: pointer; text-decoration: none; transition: all 0.3s;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-cyan));
+  color: white; box-shadow: 0 4px 20px rgba(59,130,246,0.3);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(59,130,246,0.4); }
+.btn-ghost {
+  background: var(--bg-card); border: 1px solid var(--border-md);
+  color: var(--text-sec);
+}
+.btn-ghost:hover { color: var(--text); border-color: rgba(148,163,184,0.25); background: var(--bg-card-hover); }
+
+/* ===== STATS ===== */
+.stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+  background: var(--border); border-radius: 14px; overflow: hidden;
+  max-width: 700px; margin: 50px auto 0;
+  animation: fadeUp 0.7s ease 0.4s both;
+}
+.stat { padding: 22px 16px; background: var(--bg-card); text-align: center; }
+.stat:hover { background: var(--bg-card-hover); }
+.stat-num {
+  font-size: 24px; font-weight: 800; letter-spacing: -1px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.stat-num.blue { color: var(--accent); }
+.stat-num.cyan { color: var(--accent-cyan); }
+.stat-num.emerald { color: var(--accent-emerald); }
+.stat-num.amber { color: var(--accent-amber); }
+.stat-label { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+
+/* ===== SECTIONS ===== */
+.section { padding: 80px 0; }
+.section + .section { border-top: 1px solid var(--border); }
+
+.section-label {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 5px 14px; border-radius: 100px;
+  background: var(--bg-card); border: 1px solid var(--border-md);
+  font-size: 11px; font-weight: 600; color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: clamp(28px, 4vw, 38px); font-weight: 800;
+  letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 16px;
+}
+
+.section-desc {
+  font-size: 16px; color: var(--text-sec); max-width: 600px; line-height: 1.75;
+}
+
+/* ===== CONCEPT CARD ===== */
+.concept-card {
+  margin-top: 40px; padding: 28px 32px;
+  background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(6,182,212,0.05));
+  border: 1px solid rgba(59,130,246,0.15);
+  border-radius: 18px; position: relative; overflow: hidden;
+}
+.concept-card::before {
+  content: ''; position: absolute; top: 0; right: 0;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.concept-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.concept-card p { font-size: 14px; color: var(--text-sec); margin-bottom: 16px; line-height: 1.7; }
+.concept-card .btn { font-size: 13px; padding: 10px 22px; }
+
+/* ===== TASK CARDS ===== */
+.task-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 32px; }
+
+.task-card {
+  padding: 24px 28px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: 16px;
+  transition: all 0.25s;
+}
+.task-card:hover { border-color: var(--border-md); background: var(--bg-card-hover); }
+
+.task-card-header {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
+}
+.task-card-icon {
+  width: 40px; height: 40px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.task-card-icon.blue { background: rgba(59,130,246,0.12); }
+.task-card-icon.emerald { background: rgba(16,185,129,0.12); }
+.task-card-icon.violet { background: rgba(139,92,246,0.12); }
+
+.task-card h4 { font-size: 16px; font-weight: 700; }
+.task-card ul { list-style: none; }
+.task-card li {
+  padding: 5px 0; font-size: 14px; color: var(--text-sec);
+  padding-left: 18px; position: relative;
+}
+.task-card li::before {
+  content: ''; position: absolute; left: 0; top: 13px;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--text-dim);
+}
+
+/* ===== REQUIREMENTS ===== */
+.req-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+@media (max-width: 640px) { .req-grid { grid-template-columns: 1fr; } }
+
+.req-item {
+  padding: 20px 22px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: 14px;
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.req-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+.req-item h5 { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+.req-item p { font-size: 13px; color: var(--text-dim); }
+
+/* ===== TEAM ===== */
+.team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 32px; }
+@media (max-width: 640px) { .team-grid { grid-template-columns: 1fr; } }
+
+.team-card {
+  padding: 20px 22px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: 14px;
+}
+.team-card.you {
+  grid-column: 1/-1;
+  background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(139,92,246,0.06));
+  border-color: rgba(59,130,246,0.2);
+}
+.team-name { font-size: 15px; font-weight: 700; margin-bottom: 3px; }
+.team-role { font-size: 13px; color: var(--text-dim); }
+
+/* ===== STEPS ===== */
+.steps { margin-top: 40px; }
+
+.step {
+  padding: 32px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: 18px;
+  margin-bottom: 20px; position: relative;
+}
+.step:hover { border-color: var(--border-md); }
+
+.step-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 10px;
+  font-size: 14px; font-weight: 800; margin-bottom: 16px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.step-num.s1 { background: rgba(59,130,246,0.12); color: var(--accent); }
+.step-num.s2 { background: rgba(6,182,212,0.12); color: var(--accent-cyan); }
+.step-num.s3 { background: rgba(16,185,129,0.12); color: var(--accent-emerald); }
+
+.step h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+.step p { font-size: 15px; color: var(--text-sec); }
+
+.step .send-to {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 14px; padding: 10px 20px; border-radius: 12px;
+  background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.15);
+  font-size: 14px; font-weight: 600; color: var(--accent);
+  text-decoration: none; transition: all 0.2s;
+}
+.step .send-to:hover { background: rgba(59,130,246,0.14); }
+
+.step .send-to-alt {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 10px; margin-left: 8px; padding: 10px 20px; border-radius: 12px;
+  background: transparent; border: 1px solid var(--border-md);
+  font-size: 13px; font-weight: 500; color: var(--text-sec);
+  text-decoration: none; transition: all 0.2s;
+}
+.step .send-to-alt:hover { background: var(--bg-card-hover); color: var(--text); }
+
+/* ===== QUESTIONS ===== */
+.questions { margin-top: 20px; }
+
+.q-card {
+  padding: 22px 26px; background: var(--bg-elevated);
+  border: 1px solid var(--border); border-radius: 14px;
+  margin-bottom: 12px; display: flex; gap: 16px; align-items: flex-start;
+}
+.q-num {
+  flex-shrink: 0; width: 30px; height: 30px; border-radius: 8px;
+  background: rgba(6,182,212,0.1); color: var(--accent-cyan);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 800; font-family: 'JetBrains Mono', monospace;
+}
+.q-text { font-size: 14.5px; color: var(--text-sec); line-height: 1.7; }
+
+/* ===== CALENDLY BLOCK ===== */
+.calendly-block {
+  text-align: center; margin-top: 16px;
+  padding: 32px; border-radius: 18px;
+  background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(6,182,212,0.04));
+  border: 1px solid rgba(16,185,129,0.12);
+}
+.calendly-block h4 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+.calendly-block p { font-size: 14px; color: var(--text-dim); margin-bottom: 18px; }
+.calendly-block .btn { font-size: 15px; }
+
+/* ===== OFFERS ===== */
+.offer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 32px; }
+@media (max-width: 720px) { .offer-grid { grid-template-columns: 1fr; } }
+
+.offer-card {
+  padding: 22px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: 14px; text-align: center;
+}
+.offer-card .emoji { font-size: 28px; margin-bottom: 10px; }
+.offer-card h5 { font-size: 14px; font-weight: 700; margin-bottom: 5px; }
+.offer-card p { font-size: 13px; color: var(--text-dim); }
+
+/* ===== CTA FOOTER ===== */
+.cta-footer {
+  text-align: center; padding: 80px 24px;
+  position: relative; overflow: hidden;
+}
+.cta-footer::before {
+  content: ''; position: absolute; bottom: -100px; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+.cta-footer h2 {
+  font-size: clamp(28px, 4vw, 38px); font-weight: 800;
+  letter-spacing: -1.5px; margin-bottom: 12px; position: relative;
+}
+.cta-footer p { font-size: 16px; color: var(--text-sec); margin-bottom: 28px; position: relative; }
+.cta-footer .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; }
+
+/* ===== NOTE ===== */
+.note {
+  margin-top: 24px; padding: 18px 22px; border-radius: 12px;
+  background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.12);
+  font-size: 13.5px; color: var(--text-sec); line-height: 1.7;
+}
+.note strong { color: var(--accent-amber); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 640px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .hero-actions { flex-direction: column; align-items: center; }
+  .topbar { padding: 0 16px; }
+  .topbar-logo span:not(.icon):not(.hl) { display: none; }
+  .topbar-nav { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<nav class="topbar">
+  <a href="./index.html" class="topbar-logo">
+    <div class="icon">S</div>
+    <span>PRAVO.</span><span class="hl">STAREC</span><span>.AI</span>
+  </a>
+  <div class="topbar-nav">
+    <a href="./concept.html">Концепт продукта</a>
+  </div>
+  <div class="topbar-right">
+    <a href="#apply" class="topbar-cta">Откликнуться</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge"><span class="dot"></span> Ищем Product Owner</div>
+    <h1>Создайте <span class="gr">правовую AI-систему</span> нового поколения</h1>
+    <p class="hero-sub">STAREC ищет человека, который превратит рабочий прототип в продукт и первых клиентов. Юридическое мышление + продуктовый подход + готовность строить.</p>
+    <div class="hero-actions">
+      <a href="#apply" class="btn btn-primary">Откликнуться →</a>
+      <a href="./concept.html" class="btn btn-ghost">Смотреть концепт</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-num blue">4</div><div class="stat-label">человека в команде</div></div>
+      <div class="stat"><div class="stat-num cyan">3</div><div class="stat-label">рабочих модуля</div></div>
+      <div class="stat"><div class="stat-num emerald">0→1</div><div class="stat-label">от прототипа к продукту</div></div>
+      <div class="stat"><div class="stat-num amber">100%</div><div class="stat-label">удалённо</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">О проекте</span>
+    <h2 class="section-title">КонсультантПлюс,<br>если бы его создавали сегодня</h2>
+    <p class="section-desc">STAREC — LegalTech-стартап. Мы создаём информационно-правовую систему с AI в ядре: не просто базу документов, а платформу, которая понимает, анализирует и помогает принимать решения.</p>
+
+    <div class="concept-card">
+      <h3>Посмотрите концепт продукта</h3>
+      <p>AI-поиск по законодательству, просмотр документов с AI-объяснениями, сравнение с конкурентами. Это направление, которое вы будете развивать.</p>
+      <a href="./concept.html" class="btn btn-primary">Открыть концепт →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TASKS -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Задачи</span>
+    <h2 class="section-title">Что предстоит делать</h2>
+    <p class="section-desc">Вы — владелец информационно-правового направления. От понимания рынка до запуска продукта и первых клиентов.</p>
+
+    <div class="task-grid">
+      <div class="task-card">
+        <div class="task-card-header">
+          <div class="task-card-icon blue">📦</div>
+          <h4>Продукт и рынок</h4>
+        </div>
+        <ul>
+          <li>Глубоко понимать боли юристов и их клиентов, превращать в фичи</li>
+          <li>Разбирать конкурентов: КонсультантПлюс, Гарант, Кодекс</li>
+          <li>Custdev каждую неделю, пилоты, обратная связь</li>
+          <li>Упаковать продукт: позиционирование, ключевые сообщения</li>
+          <li>Выстроить воронку первых пользователей</li>
+          <li>Прототипировать фичи через вайб-кодинг (Claude Code, Codex)</li>
+        </ul>
+      </div>
+      <div class="task-card">
+        <div class="task-card-header">
+          <div class="task-card-icon emerald">⚖️</div>
+          <h4>Право</h4>
+        </div>
+        <ul>
+          <li>Определять структуру правовой базы</li>
+          <li>Обеспечивать юридическую корректность AI-ответов</li>
+          <li>Понимать боли юристов изнутри — превращать в фичи</li>
+        </ul>
+      </div>
+      <div class="task-card">
+        <div class="task-card-header">
+          <div class="task-card-icon violet">🤖</div>
+          <h4>Данные и AI</h4>
+        </div>
+        <ul>
+          <li>Источники правовой информации и структура базы</li>
+          <li>Наполнение контентом, проверка полноты</li>
+          <li>Требования к AI-моделям и качество ответов</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REQUIREMENTS -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Требования</span>
+    <h2 class="section-title">Кого мы ищем</h2>
+    <p class="section-desc">Не просто менеджер — человек-швейцарский-нож. Юридическое мышление + данные + прототипы + упаковка для рынка.</p>
+
+    <div class="req-grid">
+      <div class="req-item"><div class="req-icon">⚖️</div><div><h5>Юридическая база</h5><p>Образование или глубокое понимание правовой системы РФ</p></div></div>
+      <div class="req-item"><div class="req-icon">📦</div><div><h5>Продуктовое мышление</h5><p>Опыт управления продуктом</p></div></div>
+      <div class="req-item"><div class="req-icon">🤖</div><div><h5>Готовность к AI</h5><p>Claude Code, Codex — научим, важна открытость</p></div></div>
+      <div class="req-item"><div class="req-icon">📚</div><div><h5>Источники права</h5><p>Законы, решения, разъяснения — как собрать базу</p></div></div>
+      <div class="req-item"><div class="req-icon">📢</div><div><h5>Маркетинговое мышление</h5><p>Упаковывать ценность в слова</p></div></div>
+      <div class="req-item"><div class="req-icon">🚀</div><div><h5>Автономность</h5><p>В команде из 4 человек нет места тем, кто ждёт указаний</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Команда</span>
+    <h2 class="section-title">4 человека строят компанию</h2>
+
+    <div class="team-grid">
+      <div class="team-card"><div class="team-name">Виктор</div><div class="team-role">Основатель — стратегия, инвестиции, архитектура</div></div>
+      <div class="team-card"><div class="team-name">Кристина</div><div class="team-role">Юрист-продуктолог — PO уголовно-правового направления</div></div>
+      <div class="team-card"><div class="team-name">Карина</div><div class="team-role">Управляющий STAREC.Scan</div></div>
+      <div class="team-card you"><div class="team-name">➤ ВЫ</div><div class="team-role">Владелец информационно-правового направления — от понимания рынка до запуска продукта и первых клиентов</div></div>
+    </div>
+
+    <p style="margin-top: 20px; font-size: 14px; color: var(--text-dim); font-style: italic;">Кристина пришла юристом. За два месяца освоила Claude Code и сейчас самостоятельно ведёт полный цикл разработки — от идеи до рабочего прототипа.</p>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Условия</span>
+    <h2 class="section-title">Что мы предлагаем</h2>
+
+    <div class="offer-grid">
+      <div class="offer-card"><div class="emoji">🏗</div><h5>Роль сооснователя</h5><p>Один из четырёх людей, которые строят компанию</p></div>
+      <div class="offer-card"><div class="emoji">💰</div><h5>Доля в прибыли</h5><p>Зарабатываете, когда зарабатывает продукт</p></div>
+      <div class="offer-card"><div class="emoji">⚙️</div><h5>Рабочая база</h5><p>Три модуля, не пустые слайды</p></div>
+      <div class="offer-card"><div class="emoji">🔗</div><h5>Экосистема</h5><p>Синергия с другими AI-сервисами STAREC</p></div>
+      <div class="offer-card"><div class="emoji">📈</div><h5>Окно возможностей</h5><p>AI-направление у конкурентов ещё не ключевое</p></div>
+      <div class="offer-card"><div class="emoji">🌍</div><h5>Международный потенциал</h5><p>Начинаем с России, масштабируем</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLY -->
+<section class="section" id="apply">
+  <div class="container">
+    <span class="section-label">Откликнуться</span>
+    <h2 class="section-title">Три шага — никаких<br>бесконечных раундов</h2>
+
+    <div class="steps">
+      <!-- STEP 1 -->
+      <div class="step">
+        <div class="step-num s1">1</div>
+        <h3>Напишите о себе</h3>
+        <p>Коротко, в свободной форме: почему интересна роль (3–5 предложений), ваш опыт на стыке права и технологий, пример чего-либо, что создали с помощью AI-инструментов.</p>
+        <a href="https://t.me/vic9675" target="_blank" class="send-to">Написать в Telegram @vic9675</a>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step">
+        <div class="step-num s2">2</div>
+        <h3>Ответьте на вопросы</h3>
+        <p>Это не тест — это возможность показать, как вы думаете о продукте, рынке и пользователях. Подготовленные ответы сократят собеседование: вместо часа на базовые вопросы — сразу к сути.</p>
+
+        <div class="note"><strong>Совет:</strong> перед ответами посмотрите <a href="./concept.html" style="color: var(--accent); text-decoration: underline;">концепт продукта</a> — вопросы 2 и 6 опираются на него.</div>
+
+        <div class="questions">
+          <div class="q-card"><div class="q-num">1</div><div class="q-text">Вы открываете КонсультантПлюс (или Гарант) глазами юриста, которому нужно быстро найти ответ. Что раздражает больше всего? Назовите 3 проблемы и как бы вы их решили в нашем продукте.</div></div>
+          <div class="q-card"><div class="q-num">2</div><div class="q-text">Посмотрите концепт PRAVO.STAREC.AI. Какую одну фичу убрали бы из MVP и какую добавили? Почему?</div></div>
+          <div class="q-card"><div class="q-num">3</div><div class="q-text">У нас база из 500 федеральных законов с AI-объяснениями. Кому продадите первому? Конкретный сегмент, канал привлечения и почему они заплатят.</div></div>
+          <div class="q-card"><div class="q-num">4</div><div class="q-text">Юрист говорит: «Мне проще загуглить, чем разбираться в вашей системе». Что ответите? Как докажете ценность за 60 секунд?</div></div>
+          <div class="q-card"><div class="q-num">5</div><div class="q-text">Как бы вы организовали структуру правовой базы? Какие типы документов включить первыми и как связать их между собой?</div></div>
+          <div class="q-card"><div class="q-num">6</div><div class="q-text">У вас есть вечер и Claude Code. Какой прототип соберёте для проверки самой важной гипотезы? Опишите: гипотеза → что собираете → как проверяете.</div></div>
+        </div>
+
+        <p style="margin-top: 16px; font-size: 13.5px; color: var(--text-dim);">Формат свободный. Нет «правильных» ответов. Нам важен ход мысли.</p>
+        <a href="./questions.html" class="send-to">Отправить ответы →</a>
+        <a href="https://t.me/vic9675" target="_blank" class="send-to-alt">Или в Telegram @vic9675</a>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step">
+        <div class="step-num s3">3</div>
+        <h3>Запишитесь на собеседование</h3>
+        <p>Если уже ответили на вопросы — мы прочитаем их заранее и собеседование будет максимально содержательным. Но можно записаться и ответить позже.</p>
+
+        <div class="calendly-block">
+          <h4>Выберите удобное время</h4>
+          <p>30 минут, онлайн, без формальностей</p>
+          <a href="https://cal.com/vic9675/interview" target="_blank" class="btn btn-primary">Записаться на собеседование →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FOOTER -->
+<section class="cta-footer">
+  <h2>Через 2 года это окно закроется.<br>Сейчас — идеальный момент.</h2>
+  <p>Мы не смотрим на идеальные резюме. Мы ищем человека, у которого горят глаза.</p>
+  <div class="actions">
+    <a href="https://t.me/vic9675" target="_blank" class="btn btn-primary">Написать в Telegram</a>
+    <a href="https://cal.com/vic9675/interview" target="_blank" class="btn btn-ghost">Записаться на встречу</a>
+  </div>
+</section>
+
+</body>
+</html>
